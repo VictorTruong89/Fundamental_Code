@@ -1,0 +1,36 @@
+build/*
+build*/
+bin/*
+Dox_output/*
+data/*
+checkpoint/*
+CMakeSettings.json
+.vs/*
+out/*
+*.dll
+Dependencies/* 
+*.zip
+tmp/
+
+# For vscode
+.vscode/
+
+tmp/
+data/
+
+# For python
+venv/
+__pycache__/
+*.pyc
+
+# DO NOT ignore these files...
+!Dependencies/OpenGL_common/
+!build_template
+
+# For motion capture data files
+script/gait_scale/rris_ability_database/motion_capture_data
+script/gait_scale/rris_ability_database/*.csv
+*.mp4
+
+# For symbolic links
+*.sln
