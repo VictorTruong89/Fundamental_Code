@@ -1,74 +1,33 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 #include "data_structures.hpp"
 #include "cracking_coding_interview_6th.hpp"
+#include "C01_arrays_string.hpp"
 
 
 using namespace std;
 
-bool StringPermutation(string s, string t)
-{
-	if (s.length() != t.length())
-		return false;
-
-	//int* letter = new int[128];
-	int letter[128] = { 0 };
-	int j;
-
-	for (int i = 0; i < s.length(); i++)
-	{
-		j = (int)s[i];
-		letter[j] ++;
-	}
-	for (int i = 0; i < t.length(); i++)
-	{
-		j = (int)t[i];
-		letter[j] --;
-		if (letter[j] < 0)
-			return false;
-	}
-	return true;
-}
-
-bool RotateMatrix(vector< vector<int> > &matrix_2d)
-{
-	int size_row = matrix_2d.size();
-	int size_col = matrix_2d[0].size();
-	std::cout << "row = " << size_row << "\tcolumn = " << size_col << endl;
-	return true;
-}
-
-
 
 int main()
 {
-	Tree tree;
-	Tree::Node* root = new Tree::Node(1);
+	ArraysString chapter01;
+	// chapter01.isUniqueChars();
 
-	root->left = new Tree::Node(12);
-	root->right = new Tree::Node(9);
-
-	root->left->left = new Tree::Node(5);
-	root->left->right = new Tree::Node(6);
-
-	root->right->left = tree.NewNode(100);
-	root->right->right = tree.NewNode(50);
-
-	//tree.root->NewNode(100);
-	if (tree.isFullBinaryTree(root))
-		std::cout << "\nfull bin tree\n";
-	else cout << "not full tree\n";
-
-	cout << "\nInorder traversal : ";
-	tree.InorderTraversal(root);
+	string input_1 = "def sasd fed wer";
+	cout << input_1 << endl;
 	
-	cout << "\nPreorder traversal : ";
-	tree.PreorderTraversal(root);
+	// bool vic = chapter01.isPalindrome(input_1);
+	// cout << vic << endl;
+	char* output = chapter01.ReverseSentence(input_1);
+	for(int i = 0; i < 100; i++)
+		cout << output[i];
+	cout << endl;
 
-	cout << "\nPostorder traversal : ";
-	tree.PostorderTraversal(root);
+	// cout << output << endl;
 
 	return 0;
 }
+

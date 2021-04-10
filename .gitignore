@@ -11,6 +11,7 @@ out/*
 Dependencies/* 
 *.zip
 tmp/
+*.pdf
 
 # For vscode
 .vscode/
