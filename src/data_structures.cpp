@@ -108,7 +108,7 @@ bool LinkedList::InsertAtMid(Node* prev_node, int data)
 	Node* new_node = new Node;
 	new_node->item = data;
 	new_node->next = prev_node->next;
-	prev_node->next = new_node->next;
+	prev_node->next = new_node;
 	return true;
 }
 
