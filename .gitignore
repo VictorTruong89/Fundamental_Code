@@ -24,6 +24,10 @@ venv/
 __pycache__/
 *.pyc
 
+# For books and sample codes
+books/*
+
+
 # DO NOT ignore these files...
 !Dependencies/OpenGL_common/
 !build_template
