@@ -375,8 +375,120 @@ int TestCase()
 		"geeksforgeeks", 
 		" abcdefgah",
 		""};
+	return 0;
 }
 
+
+
+/* ============================== */
+/** @brief Input the given array into class's vector
+ * 
+ * Assumption: The input arrays are already sorted in ascending order.
+ * 
+ * @param[in] num_1 Pointer to the array 1
+ * @param[in] num_2 Pointer to the array 2
+ * @param[in] size_1 Number of elements in array_1
+ * @param[in] size_2 Number of elements in array_2
+ * 
+ * @return Nothing
+*/
+void Median2Array::inputArray(int num_1[], int num_2[], int size_1, int size_2)
+{
+	for(int i = 0; i < size_1; i++)
+	{
+		Median2Array::arr_1.push_back(num_1[i]);
+	}
+	for(int i = 0; i < size_2; i++)
+	{
+		Median2Array::arr_2.push_back(num_2[i]);
+	}
+	std::cout << "Copy Done\n";
+}
+
+/** @brief Merge and sort 2 arrays in the ascending order
+ * 
+ * Assumption: 2 input vectors are already sorted in ascending order.
+*/
+void Median2Array::MergeSort()
+{
+	// Declare 3 counter as indices of 2 input-vectors and merge-vector
+	int id1, id2, id3;
+	id1 = id2 = id3 = 0;
+
+	//
+	int size_1 = Median2Array::arr_1.size();
+	int size_2 = Median2Array::arr_2.size();
+	cout << "2 vector sizes : " << size_1 << "\t" << size_2 << endl;
+
+	// Traverse 2 input vectors with id1 & id2 
+	// Compare the elements between 2 vector to copy into merge-vector
+	while( id1 < size_1 || id2 < size_2 )
+	{
+		// Copy the smaller element into merge-vector
+		if(Median2Array::arr_1[id1] < Median2Array::arr_2[id2])
+		{
+			Median2Array::merge.push_back(Median2Array::arr_1[id1]);
+			cout << Median2Array::arr_1[id1] << " ";
+			id1++;	// Increase vector_1 index
+		}
+		else if(Median2Array::arr_1[id1] > Median2Array::arr_2[id2])
+		{
+			Median2Array::merge.push_back(Median2Array::arr_2[id2]);
+			cout << Median2Array::arr_2[id2] << " ";
+			id2++;	// Increase vector_2 index
+		}
+		else	// Both array equal
+		{
+			Median2Array::merge.push_back(Median2Array::arr_2[id2]);
+			cout << Median2Array::arr_2[id2] << " ";
+
+			id1++;
+			id2++;
+		}
+
+		//
+		if(id1 == size_1)	// When vector_1 ends, copy the rest of vector_2
+		{
+			while(id2 < size_2)
+			{
+				Median2Array::merge.push_back(Median2Array::arr_1[id2]);
+				cout << Median2Array::arr_2[id2] << " ";
+				id2++;
+			}
+		}
+		if(id2 == size_2)	// When vector_2 ends, copy the rest of vector_1
+		{
+			while(id1 < size_1)
+			{
+				Median2Array::merge.push_back(Median2Array::arr_1[id1]);
+				cout << Median2Array::arr_1[id1] << " ";
+				id1++;
+			}
+		}
+	} 
+	cout << "\nmerge size : " << Median2Array::merge.size() << endl;
+}
+
+
+/** @brief Method 1: Merge & Sort into 3rd vector then simply take the Median of merge-vector
+ * 
+*/
+double Median2Array::Method_1()
+{
+	// Merge 2 vectors into 1 sorted vector
+	Median2Array::MergeSort();
+	int size = Median2Array::merge.size();
+
+	// If merge-size is an odd number
+	if(size % 2 == 1)
+	{
+		return Median2Array::merge[size / 2]; // Beware vector-index starts from zero
+	}
+	else	// If merge-size is an even number
+	{
+		return (Median2Array::merge[size / 2] + Median2Array::merge[size / 2 - 1]) / 2;
+	}
+}
 
 
 

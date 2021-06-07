@@ -3,49 +3,36 @@
 #include <algorithm>
 
 #include <iostream>
+#include <vector>
+
+#include "leetcode_practice.hpp"
 
 using namespace std;
 
+double SimpleMedian(int* data, int& size);
 
-class SomeData
-{
-	int a;
-	string b;
-public:
-	void do_something() {};
-};
-
-class DataWrapper
-{
-private:
-	SomeData data;
-	std::mutex mtx;
-public:
-	template<typename Function>
-	void process_data(Function func)
-	{
-		std::lock_guard<mutex> l(mtx);
-		func(data);
-	}
-};
-
-SomeData* unprotected;
-
-void* mal_function(SomeData& protected_data)
-{
-	unprotected = &protected_data;
-}
-
-DataWrapper x;
-
-void foo()
-{
-	x.process_data(mal_function);
-	unprotected->do_something();
-}
+int num_1[] = {1, 12, 23, 44, 55};
+int num_2[] = {4, 15, 26, 37};
+double med_1 = 0;
+double med_2 = 0;
 
 int main()
 {
-	foo();
+	// Get the size of the original arrays
+	int size_1 = sizeof(num_1) / sizeof(num_1[0]);
+	int size_2 = sizeof(num_2) / sizeof(num_2[0]);
+
+	Median2Array test;
+	// Input the arrays into class's vectors
+	test.inputArray(num_1, num_2, size_1, size_2);
+	double median = -1;
+
+	// Apply method 1
+	median = test.Method_1();
+	cout << median << endl;
+
 	return 0;
 }
+
+
+

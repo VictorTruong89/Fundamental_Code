@@ -9,12 +9,13 @@
 
 #include <iostream>
 #include <cmath>
+#include <vector>
 
 #include "helper.hpp"
 
 
 /* ============================== */
-/** @brief Two Sum
+/** @brief 1. Two Sum
  * @date 22 / May / 2021
  * 
  * Given an array of integers & an integer "target", 
@@ -34,7 +35,7 @@ int TwoSum_Test();
 
 
 /* ============================== */
-/** @brief Add 2 Numbers using Linked List
+/** @brief 2. Add 2 Numbers using Linked List
  * @date 22/May/2021
  * 
  * QUESTION:
@@ -84,7 +85,7 @@ public:
 
 
 /* ============================== */
-/** @brief Longest sub-string
+/** @brief 3. Longest sub-string
  * @date 23/May/2021
  * 
  * QUESTION:
@@ -127,6 +128,53 @@ private:
 	int index_end;
 };
 
+
+
+/* ============================== */
+/** @brief 4. Median of 2 Sorted Arrays
+ * @date 02/Jun/2021
+ * 
+ * QUESTION:
+ * Given 2 sorted arrays arr_1 & arr_2 of size m, n respectively. Return the median of them.
+ * The overall runtime should be O( log(m+n) )
+ * 
+ * EXAMPLE:
+ * Given arr_1 = {1, 12} ; arr_2 = {3, 14, 25} >> merge = {1, 3, 12, 14, 25} >> median = 12
+ * Given arr_1 = {1, 12, 23} ; arr_2 = {3, 14, 25} >> merge = {1, 3, 12, 14, 23, 25} >> median = (12+14)/2 = 13
+ * 
+ * SOLUTION:
+ * Method 1: Simply merge & sort 2 arrays into 1 array >> Get median
+ * 
+ * Method 2: Comparing the medians of 2 arrays
+ * 1/ Create recursive function that takes in 2 array & sizes of these 2 arrays
+ * 2/ Take care of the case in which array has less than 2 elements
+ * 3/ Find 2 medians of 2 arrays >> Compare 2 medians
+ * 4/ If median_1 < median_2 >> Repeat with 1st-half of arr_1 & 2nd-half of arr_2
+ * 5/ If median_1 > median_2 >> Repeat with 2nd-half of arr_1 & 1st-half of arr_2
+*/
+class Median2Array
+{
+	std::vector<int> arr_1;
+	std::vector<int> arr_2;
+	std::vector<int> merge;
+public:
+	// Input user's array into class's vectors
+	void inputArray(int num_1[], int num_2[], int size_1, int size_2);
+
+	// Merge 2 arrays into 1 sorted array
+	void MergeSort();
+
+	// Find median of 1 array
+	int SimpleMedian();
+
+	// Make sub-vector after finding median
+
+	//
+	double Method_1();
+
+	// 
+	int Method_2();
+};
 
 
 

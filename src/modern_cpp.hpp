@@ -2,6 +2,10 @@
 #define _MODERN_CPP_HPP_
 
 
+/** @brief Recipe 2.1 Initializing Variables
+ * 
+ * PROBLEM: Initialize all variables in a standard manner.
+*/
 
 
 
